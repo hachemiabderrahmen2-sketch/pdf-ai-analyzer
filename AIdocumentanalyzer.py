@@ -37,7 +37,7 @@ if uploaded_file is not None :
                     {extracted_text[:10000]}
                     --- END DOCUMENT TEXT --- 
                     User Question: {user_query}"""
-                    response =client.models.generate_content(model='gemini-2.5-flash', contents=prompt,)
+                    response =client.models.generate_content(model='gemini-2.0-flash', contents=prompt,)
                     st.markdown("### 🤖 response:")
                     st.write(response.text)
 
