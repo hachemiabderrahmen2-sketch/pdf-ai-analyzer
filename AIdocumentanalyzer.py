@@ -27,15 +27,13 @@ if uploaded_file is not None :
         if user_query: 
             with st.spinner("Analyzing document and generating response..."): 
                 try:
-                    client = genai.Client(api_key=api_key)
-
+                    model = genai.GenerativeModel('gemini-1.5-flash')
                     prompt =f"""You are an expert document analysis assistant. Based ONLY on the provided document text below, answer the user's question accurately and concisely. If the answer is not contained within the text, explicitly state: " This information is not available in the provided document."
                     --- START DOCUMENT TEXT ---
                     {extracted_text[:10000]}
                     --- END DOCUMENT TEXT --- 
                     User Question: {user_query}"""
-                    response = client.models.generate_content(model = 'gemini-1.5-flash', contents = prompt,)
-
+                    response =model.generate_content(prompt)
                     st.markdown("### 🤖 response:")
                     st.write(response.text)
 
