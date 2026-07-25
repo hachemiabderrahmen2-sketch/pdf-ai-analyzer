@@ -15,7 +15,7 @@ uploaded_file = st.file_uploader ("choose a PDF file", type = ["PDF"])
 if uploaded_file is not None :
     pdf_reader = PdfReader(uploaded_file)
     extracted_text = ""
-    for page in pdf_reader.page:
+    for page in pdf_reader.pages:
         text = page.extract_text()
         if text:
             extracted_text += text + "\n"
